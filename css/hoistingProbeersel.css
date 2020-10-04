@@ -66,32 +66,6 @@
     --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --global-page-color: #FFFFFF;
-        --global-page-backgroundColor: var(--global-color-neutral-xxxx-dark);
-        --global-label-color: var(--global-color-neutral-xx-light);
-        --global-placeholder-color: var(--global-color-neutral-dark);
-
-        --global-input-backgroundColor: var(--global-color-neutral-xxxx-dark);
-        --global-card-backgroundColor: var(--global-color-neutral-xxx-dark);
-        --global-label-backgroundColor: var(--global-color-neutral-xxxx-dark);
-        --global-lineHeight-color: var(--global-color-neutral-xxxx-dark);
-
-        --global-input-color: var(--global-color-neutral-xxxx-light);
-        --global-input-borderColor: var(--global-input-backgroundColor);
-        --global-input-labelColor: var(--global-color-neutral-x-light);
-
-        /* states */
-        --global-input-hover-borderColor: var(--global-input-backgroundColor);
-        --global-input-focus-borderColor: var(--global-input-backgroundColor);
-
-        /* box-shadow */
-        --global-input-focus-boxshadowColor: var(--global-color-alpha-transparent);
-        --global-input-error-boxshadowColor: var(--global-color-alpha-transparent);
-    }
-}
-
 /*------------------------------------*\
 #GENERIC
 \*------------------------------------*/
@@ -111,12 +85,6 @@ html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;    
-}
-
-@media (prefers-color-scheme: dark) {
-    html {
-        background-color: var(--global-page-backgroundColor);
-    }
 }
 
 *,
@@ -554,8 +522,7 @@ input::placeholder {
     height: 100%;
 }
 
-/* dark thme logo voor uitleg op leho */
-/* .c-logo__path--1 {
+.c-logo__path--1 {
     fill: var(--global-color-neutral-xxxx-dark);
 }
 
@@ -565,30 +532,7 @@ input::placeholder {
 
 .c-logo__path--3 {
     fill: var(--color-alpha-x-dark);
-} */
-
-
-/* dark theme logo na uitleg op laho */
-.c-logo__path--1 {
-    fill: var(--logo__path--1--fill, var(--global-color-neutral-xxxx-dark));
 }
-
-.c-logo__path--2 {
-    fill: var(--logo__path--2--fill, var(--global-color-alpha));
-}
-
-.c-logo__path--3 {
-    fill: var(--logo__path--3--fill, var(--color-alpha-x-dark));
-} 
-
-@media (prefers-color-scheme: dark) {
-    .c-logo {
-        --logo__path--1--fill: var(--global-page-color);
-        --logo__path--2--fill: var(--logo__path--1--fill);
-        --logo__path--3--fill: var(--logo__path--1--fill);
-    }
-}
-
 
 /*
     Component: Card
@@ -641,20 +585,6 @@ input::placeholder {
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    .c-card {
-        background-color: var(--global-card-backgroundColor);
-    }
-
-    .c-card__title {
-        color: white;
-    }
-
-    .c-card__footer {
-        border-top: var(--global-borderWidth) solid var(--global-lineHeight-color);
-    }
-}
-
 /*
     Component: Forms
     ---
@@ -703,13 +633,6 @@ input::placeholder {
     border-color: var(--global-color-alpha);
     box-shadow: 0 0 0 3px var(--global-color-alpha);
     
-}
-
-@media (prefers-color-scheme: dark) {
-    .c-input {
-        border: none;
-        background-color: var(--global-label-backgroundColor);
-    }
 }
 
 /* option input for checkboxes and radio buttons */
@@ -773,13 +696,14 @@ input::placeholder {
     background-color: var(--global-color-alpha);
   }
 
-/* .c-option--hidden:checked + .c-custom-option {  adjanct sibling selector. je zoekt c-o-hclass--... aangrenzend zoeken (wat volgt hier meteen na) een c-custom-option */
+.c-option--hidden:checked + .c-custom-option {  /* adjanct sibling selector. je zoekt c-o-hclass--... aangrenzend zoeken (wat volgt hier meteen na) een c-custom-option */
     /*
       Do magic stuff here, for example:
       Iets selecteren van optie, dan rode achtergrond
     */
     /* background-color: red; */
-  /* } */
+
+  }
 
   .c-option--hidden {
       --custom-option-focus-borderColor: var(--global-input-borderColor);   /* standaard vlaue voor de box shadow */
@@ -823,84 +747,6 @@ input::placeholder {
     margin-bottom: 12px;
 }
 
-@media (prefers-color-scheme: dark) {
-    .c-custom-option__fake-input {
-        border: none;
-        background-color:var(--global-input-backgroundColor);
-    }
-}
-
-
-/*
-    Component: toggle button
-    ---
-    Class to make a toggle button
-*/
-.c-custom-toggle{
-    white-space: var(--global-whitespace); 
-    display: flex;
-    align-items: center;
-}
-
-.c-custom-toggle__fake-input {
-    margin-right: 16px;
-    height: 24px;
-    width: 48px;
-    border: 1px solid #81ADF0;
-    border-radius: 24px;
-    background-color: var(--global-color-neutral-xxxx-light);
-}
-
-.c-toggle-list__item + .c-toggle-list__item {
-    margin-top: 24px;
-}
-
-.c-custom-toggle--inverted {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-end;
-}
-
-.c-option--hidden:focus + .c-custom-toggle .c-custom-toggle__fake-input {
-    border: 1px solid #81ADF0;
-    box-shadow: var(--global-input-boxShadow)
-}
-
-.c-custom-toggle__fake-input::before {
-    content: "";
-    display: block;
-    height: 22px;
-    width: 22px;
-    border-radius: 24px;
-    background-color: #FFFFFF;
-    transition: all var(--transition-alpha);
-    box-shadow: 0px 1px 3px #00000021; 
-}
-
-input:checked + .c-custom-toggle .c-custom-toggle__fake-input::before {
-    transform: translateX(26px);
-}
-
-input:checked + .c-custom-toggle .c-custom-toggle__fake-input {
-    background-color: var(--global-color-alpha-light);
-    border-color: var(--global-color-alpha-dark);
-}
-
-/*
-    Component: select dropdown
-    ---
-    Class to put on all form labels
-*/
-
-.c-custom-select {
-    display: block;
-}
-
-.c-custom-select__input {
-    position: absolute;
-    /* pointer-events: none; */
-}
-
 /*
     Component: Label
     ---
@@ -917,12 +763,6 @@ input:checked + .c-custom-toggle .c-custom-toggle__fake-input {
 
 .c-label--option {
     padding-bottom: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-    .c-label {
-        color: var(--global-input-labelColor);
-    }
 }
 
 /*
@@ -961,10 +801,6 @@ input:checked + .c-custom-toggle .c-custom-toggle__fake-input {
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
-.u-text-decoration {
-    text-decoration: none;
-}
-
 
 /*
     Utilities: color
